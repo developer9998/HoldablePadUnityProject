@@ -536,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670494775}
   m_Layer: 0
-  m_Name: gorilla
+  m_Name: PreviewObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 804354251}
   - component: {fileID: 804354252}
   m_Layer: 0
-  m_Name: Exporter
+  m_Name: RightExporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1513,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1546,7 +1546,7 @@ SkinnedMeshRenderer:
   m_SortingOrder: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 5461393573588327343, guid: 6703a7549bfd5e3488ef72f8b669aa42, type: 3}
   m_Bones:
@@ -1660,7 +1660,7 @@ GameObject:
   - component: {fileID: 2102382807}
   - component: {fileID: 2102382808}
   m_Layer: 0
-  m_Name: Exporter
+  m_Name: LeftExporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
