@@ -7,10 +7,10 @@ public class CreateObject : EditorWindow
 {
     private Descriptor[] notes;
 
-    [MenuItem("Holdable Pad/Exporter")]
+    [MenuItem("Holdable Pad/Holdable Exporter")]
     public static void ShowWindow()
     {
-        GetWindow(typeof(CreateObject), false, "Exporter", false);
+        GetWindow(typeof(CreateObject), false, "Holdable Exporter", false);
     }
 
     private void OnFocus()
@@ -22,7 +22,7 @@ public class CreateObject : EditorWindow
 
     void OnGUI()
     {
-        var window = GetWindow(typeof(CreateObject), false, "Exporter", false);
+        var window = GetWindow(typeof(CreateObject), false, "Holdable Exporter", false);
 
         int ScrollSpace = (16 + 20) + (16 + 17 + 17 + 20 + 20);
         foreach (var note in notes)
