@@ -54,9 +54,9 @@ Once you click Holdable Exporter, a new Unity Window will pop up, find which exp
 
 When you have made sure it has exported, click the "Export (Holdable Name)", select your path, and it will export.
 
-![namehand](https://user-images.githubusercontent.com/81720436/176590757-8c5c6414-4c43-4142-ab88-39846408031a.png)
+![image](https://user-images.githubusercontent.com/81720436/177212737-b7eb1378-f761-41d3-92b3-77983cc29cc4.png)
 
-After you're done, a new instance of the File Explorer should open directing you to the holdable.
+After you clicked "OK", a new instance of the File Explorer should open directing you to the holdable.
               
 You can either put it in your Gorilla Tag folder > BepInEx > Plugins > HoldablePad > CustomHoldables or upload it to my Discord: https://discord.gg/3qf7J8KkQD       
 After all of this, you are done! Now go take a small break and enjoy the rest of your day! :)                
