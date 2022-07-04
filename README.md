@@ -40,7 +40,7 @@ This means nearly every object and component will get exported with the exporter
 Inside of each of the exporter objects, there is a script called the Descriptor.                
 The Descriptor is what tells Gorilla Tag the holdable's info, the name, author, etc.                
 
-![desc](https://user-images.githubusercontent.com/81720436/176591224-fd64b168-19d5-47a5-baf0-d530fb7473dd.png)
+![image](https://user-images.githubusercontent.com/81720436/177212634-2d030b7f-8fd5-44d8-8f65-6f0db3536b69.png)
 
 When you're done making your holdable, go to the topbar of the screen, Holdable Pad > Holdable Exporter.                
 Once you click Holdable Exporter, a new Unity Window will pop up, find which exporter you're exporting, and make sure it has the following:                
