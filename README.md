@@ -30,7 +30,7 @@ When you open up HoldablePad's Unity Project, go to the "Project" tab, double cl
 When you load in the scene, the first thing you will see is probably a gorilla model with both of it's arms extending outwards.                
 In the scene, there are also two exporter GameObjects. Follow the path shown in the Hierarchy to access the objects.                
 
-![left right](https://user-images.githubusercontent.com/81720436/176589755-c12150fb-c44e-4504-acf0-c9ef3622f766.png)
+![image](https://user-images.githubusercontent.com/81720436/177212358-ff2d5889-f0a5-44c5-9c69-cf1518fb159c.png)
 
 When these objects are exported, everything inside of them is exported too.                
 This means nearly every object and component will get exported with the exporter object.                
@@ -48,17 +48,15 @@ Once you click Holdable Exporter, a new Unity Window will pop up, find which exp
 - An author
 - A description
 - If you're exporting the LEFT exporter, check the "Left Hand" box.
+- If you want the holdable colours to be yours ingame, check the "Custom Colours" box.
 
-![righthandmenu](https://user-images.githubusercontent.com/81720436/176590737-551bc6cc-5e9c-4d91-acbd-ed717b6e21b8.png)
+![image](https://user-images.githubusercontent.com/81720436/177212438-91bb98c2-fcaf-4a79-bd02-8a8f6ab797be.png)
 
-When you have made sure it has exported, click the "Export (Holdable Name)" button and it will export.
+When you have made sure it has exported, click the "Export (Holdable Name)", select your path, and it will export.
 
 ![namehand](https://user-images.githubusercontent.com/81720436/176590757-8c5c6414-4c43-4142-ab88-39846408031a.png)
 
-Don't know where it was exported? Go back to that "Project" tab earlier, a new folder should be there called "ExportedHoldables"
-
-![exporterd](https://user-images.githubusercontent.com/81720436/176590902-45fbfe6c-26db-4077-a4cc-786e735bf6f1.png)
-
-If it's there, you should be able to spot your holdable .holdable file! Right click it > Show In Explorer, copy the file, and do whatever with it!                
+After you're done, a new instance of the File Explorer should open directing you to the holdable.
+              
 You can either put it in your Gorilla Tag folder > BepInEx > Plugins > HoldablePad > CustomHoldables or upload it to my Discord: https://discord.gg/3qf7J8KkQD       
 After all of this, you are done! Now go take a small break and enjoy the rest of your day! :)                
