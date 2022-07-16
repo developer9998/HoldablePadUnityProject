@@ -1,13 +1,23 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
 public class Descriptor : MonoBehaviour
 {
-    [SerializeField] public string Name = "";
-    [SerializeField] public string Author = "";
-    [SerializeField] public string Description = "";
-    [SerializeField] public bool leftHand = false;
+    public string Name = "";
+    public string Author = "";
+    public string Description = "";
+    public bool leftHand = false;
+    public bool customColours = false;
 
-    [SerializeField] public bool customColours = false;
-    //[SerializeField] public bool leftHand = false;
+    public bool gunEnabled = false;
+    public bool audioMode;
+    public AudioClip shootSound;
+    public float bulletSpeed;
+    public float bulletCooldown;
+    public GameObject bulletObject;
+
+    public bool vibra;
+    public float strenth = 0.25f;
+    public float sTime = 0.5f;
+
+    public float bulletMultiply;
 }

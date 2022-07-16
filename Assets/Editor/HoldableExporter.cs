@@ -52,8 +52,8 @@ public class HoldableExporter : EditorWindow
                 descriptorNote.Name = EditorGUILayout.TextField("Name:", descriptorNote.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 descriptorNote.Author = EditorGUILayout.TextField("Author:", descriptorNote.Author, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 descriptorNote.Description = EditorGUILayout.TextField("Description:", descriptorNote.Description, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                EditorGUILayout.LabelField($"Left Hand:                              {(descriptorNote.leftHand ? "Yes" : "No")}", GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                EditorGUILayout.LabelField($"Custom Colours:                   {(descriptorNote.customColours ? "Yes" : "No")}", GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                //EditorGUILayout.LabelField($"Left Hand:                              {(descriptorNote.leftHand ? "Yes" : "No")}", GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
+                //EditorGUILayout.LabelField($"Custom Colours:                   {(descriptorNote.customColours ? "Yes" : "No")}", GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
 
                 // EditorGUILayout.EnumFlagsField(CustomColours.TRUE, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
 
@@ -62,39 +62,49 @@ public class HoldableExporter : EditorWindow
                     GameObject noteObject = descriptorNote.gameObject;
                     if (noteObject != null && descriptorNote != null)
                     {
-                        if (descriptorNote.Name != "")
+                        if (descriptorNote.Name == "" || descriptorNote.Author == "" || descriptorNote.Description == "")
                         {
-                            if (descriptorNote.Author != "")
-                            {
-                                if (descriptorNote.Description != "")
-                                {
-                                    string path = EditorUtility.SaveFilePanel("Where will you build your holdable?", "", descriptorNote.Name + ".holdable", "Holdable");
+                            EditorUtility.DisplayDialog("Export Failed", "It is required to fill in the Name, Author, and Description for your holdable.", "OK");
+                            return;
+                        }
 
-                                    if (path != "")
-                                    {
-                                        Debug.ClearDeveloperConsole();
-                                        Debug.Log("Exporting holdable");
-                                        EditorUtility.SetDirty(descriptorNote);
-                                        BuildAssetBundle(descriptorNote.gameObject, path);
-                                    }
-                                    else
-                                    {
-                                        EditorUtility.DisplayDialog("Export Failed", "Please include the path to where the holdable will be exported at.", "OK");
-                                    }
-                                }
-                                else
-                                {
-                                    EditorUtility.DisplayDialog("Export Failed", "Please include a description for your holdable.", "OK");
-                                }
-                            }
-                            else
+                        if (descriptorNote.gunEnabled)
+                        {
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                            if (descriptorNote.shootSound == null || descriptorNote.bulletObject == null || descriptorNote.bulletSpeed == null || descriptorNote.bulletCooldown == null)
                             {
-                                EditorUtility.DisplayDialog("Export Failed", "Please include an author for your holdable.", "OK");
+                                EditorUtility.DisplayDialog("Export Failed", "If your holdable is under the Gun module, it is required to fill in the Bullet Speed, Cooldown, Object, and Sound.", "OK");
+                                return;
                             }
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                            if (descriptorNote.vibra == true && descriptorNote.strenth == null || descriptorNote.sTime == null)
+                            {
+                                EditorUtility.DisplayDialog("Export Failed", "If your holdable is under the Gun module and has vibrations, it is required to fill in the Strength and Duration.", "OK");
+                                return;
+                            }
+
+                            if (descriptorNote.vibra == true && descriptorNote.strenth > 0.5f && descriptorNote.strenth != 0.5f || descriptorNote.sTime > 0.1f && descriptorNote.sTime != 0.1f)
+                            {
+                                EditorUtility.DisplayDialog("Export Failed", "If your holdable is under the Gun module and has vibrations, the Strength has to be under 0.5 and Duration has to be under 0.1.", "OK");
+                                return;
+                            }
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                        }
+
+                        string path = EditorUtility.SaveFilePanel("Where will you build your holdable?", "", descriptorNote.Name + ".holdable", "Holdable");
+
+                        if (path != "")
+                        {
+                            Debug.ClearDeveloperConsole();
+                            Debug.Log("Exporting holdable");
+                            EditorUtility.SetDirty(descriptorNote);
+                            BuildAssetBundle(descriptorNote.gameObject, path);
                         }
                         else
                         {
-                            EditorUtility.DisplayDialog("Export Failed", "Please include a name for your holdable.", "OK");
+                            EditorUtility.DisplayDialog("Export Failed", "Please include the path to where the holdable will be exported at.", "OK");
                         }
                     }
                     else
@@ -136,6 +146,39 @@ public class HoldableExporter : EditorWindow
         Text player_info = contentsRoot.AddComponent<Text>();
         string split = "$"; // splits each of the strings
         player_info.text = holdableName + split + holdableAuthor + split + holdableDescription + split + holdableLHand + split + holdableCustomColour;
+
+        if (descriptor.gunEnabled == true)
+        {
+            GameObject soundObject = new GameObject();
+            soundObject.name = "UsedBulletSoundEffect";
+            soundObject.transform.SetParent(contentsRoot.transform, false);
+            AudioSource soundSource = soundObject.AddComponent<AudioSource>();
+            soundSource.volume = 0.15f;
+            soundSource.clip = descriptor.shootSound;
+            soundSource.playOnAwake = false;
+            GameObject tempBullet = contentsRoot.GetComponent<Descriptor>().bulletObject;
+            //if (contentsRoot.GetComponent<Descriptor>().bulletObject != null)
+            //{
+            //    DestroyImmediate(contentsRoot.GetComponent<Descriptor>().bulletObject);
+            //}
+            tempBullet.transform.SetParent(contentsRoot.transform, true);
+            tempBullet.name = "UsedBulletGameObject";
+
+            float STRENGTH = 0;
+            float DURATION = 0;
+
+            if (descriptor.vibra == true)
+            {
+                STRENGTH = descriptor.strenth;
+                DURATION = descriptor.sTime;
+            }
+
+            Text bulletInfo = tempBullet.AddComponent<Text>();
+            string bulletInfoSplit = "$";
+            bulletInfo.text = descriptor.bulletSpeed.ToString() + bulletInfoSplit + descriptor.bulletCooldown.ToString() + bulletInfoSplit + descriptor.audioMode.ToString() + bulletInfoSplit + descriptor.vibra.ToString() + bulletInfoSplit + STRENGTH.ToString() + bulletInfoSplit + DURATION.ToString();
+            bulletInfo.enabled = false;
+        }
+
 
         DestroyImmediate(contentsRoot.GetComponent<Descriptor>());
         if (File.Exists(prefabPathTEMP))
