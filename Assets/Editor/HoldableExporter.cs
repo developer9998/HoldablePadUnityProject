@@ -52,10 +52,6 @@ public class HoldableExporter : EditorWindow
                 descriptorNote.Name = EditorGUILayout.TextField("Name:", descriptorNote.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 descriptorNote.Author = EditorGUILayout.TextField("Author:", descriptorNote.Author, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
                 descriptorNote.Description = EditorGUILayout.TextField("Description:", descriptorNote.Description, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                //EditorGUILayout.LabelField($"Left Hand:                              {(descriptorNote.leftHand ? "Yes" : "No")}", GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-                //EditorGUILayout.LabelField($"Custom Colours:                   {(descriptorNote.customColours ? "Yes" : "No")}", GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
-
-                // EditorGUILayout.EnumFlagsField(CustomColours.TRUE, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(17));
 
                 if (GUILayout.Button("Export " + descriptorNote.Name, GUILayout.Width(windowWidthIncludingScrollbar - 40), GUILayout.Height(20)))
                 {
@@ -85,7 +81,7 @@ public class HoldableExporter : EditorWindow
                                 return;
                             }
 
-                            if (descriptorNote.vibra == true && descriptorNote.strenth > 0.5f && descriptorNote.strenth != 0.5f || descriptorNote.sTime > 0.1f && descriptorNote.sTime != 0.1f)
+                            if (descriptorNote.vibra && (descriptorNote.strenth > 0.5f || descriptorNote.sTime > 0.1f))
                             {
                                 EditorUtility.DisplayDialog("Export Failed", "If your holdable is under the Gun module and has vibrations, the Strength has to be under 0.5 and Duration has to be under 0.1.", "OK");
                                 return;
@@ -233,6 +229,15 @@ public class HoldableExporter : EditorWindow
 
         string whichHand = holdableLHand == "true" ? "Left" : "Right";
         EditorUtility.DisplayDialog("Export Success", $"Your holdable was exported!", "OK");
+
+        try
+        {
+            AssetDatabase.RemoveAssetBundleName("holdableassetbundle", true);
+        }
+        catch
+        {
+
+        }
 
         string holdablePath = path + "/";
         EditorUtility.RevealInFinder(holdablePath);
