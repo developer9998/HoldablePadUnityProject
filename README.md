@@ -1,42 +1,24 @@
-# Guide
-This is the official HoldablePad guide on how to make your own holdables.                
+# HoldablePadUnityProject
+**HoldablePadUnityProject** is the official Unity project for the [HoldablePad](https://github.com/developer9998/HoldablePad) mod for creating your own holdables. This Unity project does not reflect off of my current work I do currently, and may be lower quality.
 
 ## Requirements 
-Before you start, you are going to need a few things:
-- Unity Hub
-- Unity 2019.3.15
-- HoldablePad's Unity Project
+Before creating your own holdables, you will need to get:
+- The ["Unity Hub"](https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe) application
+- Unity 2022.3.2 (Located in the [Unity Archive](https://unity3d.com/get-unity/download/archive) page)
 
-Unity Hub                
-Download: https://public-cdn.cloud.unity3d.com/hub/prod/UnityHubSetup.exe                
+## Download
+[This link](https://github.com/developer9998/HoldablePadUnityProject/archive/refs/heads/main.zip) will download the HoldablePad Unity Project onto your device. Make sure the file for the project is extracted before you open it in Unity.
 
-Unity 2019.3.15                
-Download: https://unity3d.com/get-unity/download/archive                
+## Opening
+In Unity Hub, click on "Open" and redirect Unity to the extracted folder of the project. I recommend keeping this folder somewhere safe, such as the Desktop or Documents folder. If you're still unsure about how to open Unity projects, [this video](https://www.youtube.com/watch?v=IqjSMlk1-30) may help assist you with doing so.
 
-HoldablePad's Unity Project                
-Download: https://github.com/developer9998/HoldablePadUnityProject/archive/refs/heads/main.zip                
+## Scene Location
+In the Unity project, there is a scene included which is the base for creating holdables. To open the scene, click on the "Scenes" folder located in the "Project" window, the scene should be located in that folder under the name "Scene".
 
-If you don't know how to install Unity Hub or Unity 2019.3.15, watch this video:                
-https://www.youtube.com/watch?v=gg9Mb9xH7MY                
+## Scene Information
+When the scene has been opened, it contains a Gorilla model from the game, both arms are extending outwards for easier creation of holdables. Using the Hierarchy window, you can inspect this model which reveals two objects inside, "Left Hand" and "Right Hand", additionally both have an exporter object in them.     
 
-Along with this, if you don't know how to open projects with Unity Hub, watch this video:                
-https://www.youtube.com/watch?v=IqjSMlk1-30                
-
-## The Project
-When you open up HoldablePad's Unity Project, go to the "Project" tab, double click both "Scenes" and then "SampleScene". 
-
-![onetwo](https://user-images.githubusercontent.com/81720436/176589610-978cc6eb-04b2-43ae-9fa5-ab1116b004bf.png)
-
-When you load in the scene, the first thing you will see is probably a gorilla model with both of it's arms extending outwards.                
-In the scene, there are also two exporter GameObjects. Follow the path shown in the Hierarchy to access the objects.                
-
-![image](https://user-images.githubusercontent.com/81720436/177212358-ff2d5889-f0a5-44c5-9c69-cf1518fb159c.png)
-
-When these objects are exported, everything inside of them is exported too.                
-This means nearly every object and component will get exported with the exporter object.                
-
-![comp](https://user-images.githubusercontent.com/81720436/176591533-9263d38c-ea8b-4f24-a950-d0405028aa7d.png)
-
+## Descriptor Information
 Inside of each of the exporter objects, there is a script called the Descriptor.                
 The Descriptor is what tells Gorilla Tag the holdable's info, the name, author, etc.                
 
