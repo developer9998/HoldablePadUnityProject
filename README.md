@@ -13,32 +13,32 @@ Before creating your own holdables, you will need to get:
 In Unity Hub, click on "Open" and redirect Unity to the extracted folder of the project. I recommend keeping this folder somewhere safe, such as the Desktop or Documents folder. If you're still unsure about how to open Unity projects, [this video](https://www.youtube.com/watch?v=IqjSMlk1-30) may help assist you with doing so.
 
 ## Scene Location
-In the Unity project, there is a scene included which is the base for creating holdables. To open the scene, click on the "Scenes" folder located in the "Project" window, the scene should be located in that folder under the name "Scene".
+In the Unity project, there is a scene included which is the base for creating holdables. The scene is located in the "Scenes" folder, located in the "Project" tab.
 
 ## Scene Information
-When the scene has been opened, it contains a Gorilla model from the game, both arms are extending outwards for easier creation of holdables. Using the Hierarchy window, you can inspect this model which reveals two objects inside, "Left Hand" and "Right Hand", additionally both have an exporter object in them.     
+When the scene has been opened, it contains a Gorilla model from the game, both arms are extending outwards for easier creation of holdables. Using the Hierarchy window, you should spot two objects with the name "Left Hand" & "Right Hand", in each of these objects there is an additional "Exporter" object, with a descriptor.
 
 ## Descriptor Information
-Inside of each of the exporter objects, there is a script called the Descriptor.                
-The Descriptor is what tells Gorilla Tag the holdable's info, the name, author, etc.                
+A descriptor is used to inform the HoldablePad information relating to your holdables. Make sure your objects used for your holdable are put in the appropriate descriptor, for instance a holdable for the right hand will go in the descriptor object for the right hand. A descriptor has multiple different options such as:
 
-![image](https://user-images.githubusercontent.com/81720436/177212634-2d030b7f-8fd5-44d8-8f65-6f0db3536b69.png)
+- **Name**  
+  This is the name of your holdable.
+- **Author**  
+  This is the author of your holdable.
+- **Descriptor**  
+  This is the description of your holdable. It can be used to inform the player of what your holdable is, or any credit for your holdable.
+- **Left Hand**  
+  This box is very important when it comes to placing the holdable in the hands of the player, check this box if the holdable your exporting should go in your left hand.
+- **Custom Colour**  
+  This box is very important when it comes to customization for your holdable. Any valid colour properties for the materials of the holdable will match the colour of the player.
+- **Gun Mechanics**  
+  This box informs the mod your holdable should be dealt with as a gun, and not just some ordinary holdable. With this more options appear which all have to be configured before exporting.
 
-When you're done making your holdable, go to the topbar of the screen, Holdable Pad > Holdable Exporter.                
-Once you click Holdable Exporter, a new Unity Window will pop up, find which exporter you're exporting, and make sure it has the following:                
-- A name
-- An author
-- A description
-- If you're exporting the LEFT exporter, check the "Left Hand" box.
-- If you want the holdable colours to be yours ingame, check the "Custom Colours" box.
+## Exporter Information
+An exporter is a window used to export your objects and convert them into ``.holdable`` files. The exporter can be opened by clicking the "Holdable Pad" dropdown on the top of the Unity editor window, and clicking on the "Holdable Exporter" item. The exporter contains a list of valid holdables found in the scene, where each could be exported.
 
-![image](https://user-images.githubusercontent.com/81720436/177212438-91bb98c2-fcaf-4a79-bd02-8a8f6ab797be.png)
+## Exporting Information
+When exporting, you will need to assign a valid path for your holdable, perhaps try your Downloads folder if you're new, or if you know your way around the Gorilla Tag folder, try out the Holdables folder for the mod. When the holdable has finished exporting, the location for the holdable should automatically be opened. 
 
-When you have made sure it has exported, click the "Export (Holdable Name)", select your path, and it will export.
-
-![image](https://user-images.githubusercontent.com/81720436/177212737-b7eb1378-f761-41d3-92b3-77983cc29cc4.png)
-
-After you clicked "OK", a new instance of the File Explorer should open directing you to the holdable.
-              
-You can either put it in your Gorilla Tag folder > BepInEx > Plugins > HoldablePad > CustomHoldables or upload it to my Discord: https://discord.gg/3qf7J8KkQD       
-After all of this, you are done! Now go take a small break and enjoy the rest of your day! :)                
+## Sharing Information
+If you would like other modders to use your holdable, you can post it to my [Discord Server](https://discord.gg/dev9998) under the "#holdable-download" channel. When uploading, make sure you attach your holdable and an in-game screenshot of the holdable being used.
